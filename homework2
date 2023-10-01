@@ -1,0 +1,15 @@
+class Employee():
+    def __init__(self, name, mark):
+        self.name = name
+        self.mark = mark
+
+empl1 = Employee('Kate', 3)
+empl2 = Employee('Lena', 4) 
+empl3 = Employee('Natasha', 2)
+empl4 = Employee('Liza', 1) 
+empl5 = Employee('Vera', 5) 
+empl6 = Employee('Valentina', 6)
+
+my_list = [empl1, empl2, empl3, empl4, empl5, empl6] 
+
+result = [filter(lambda el, el.mark < 5), my_list]
