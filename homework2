@@ -1,15 +1,131 @@
-class Employee():
-    def __init__(self, name, mark):
-        self.name = name
-        self.mark = mark
+import java.awt.Color;
+import java.awt.image.BufferedImage;
 
-empl1 = Employee('Kate', 3)
-empl2 = Employee('Lena', 4) 
-empl3 = Employee('Natasha', 2)
-empl4 = Employee('Liza', 1) 
-empl5 = Employee('Vera', 5) 
-empl6 = Employee('Valentina', 6)
+public class ImageFilter {
+    public static void main(String[] args) {
+        BufferedImage image = new BufferedImage(800, 600, BufferedImage.TYPE_INT_RGB);
+        // Загрузка изображения
+        
+        // Применение серого фильтра
+        BufferedImage grayImage = applyGrayFilter(image);
+        // Сохранение серого изображения
+        
+        // Применение красного фильтра
+        BufferedImage redImage = applyRedFilter(image);
+        // Сохранение красного изображения
 
-my_list = [empl1, empl2, empl3, empl4, empl5, empl6] 
+        // Применение зеленого фильтра
+        BufferedImage greenImage = applyGreenFilter(image);
+        // Сохранение зеленого изображения
+        
+        // Применение синего фильтра
+        BufferedImage blueImage = applyBlueFilter(image);
+        // Сохранение синего изображения
+        
+        // Применение другого эффекта
+        BufferedImage customImage = applyCustomFilter(image);
+        // Сохранение изображения с другим эффектом
+    }
 
-result = [filter(lambda el, el.mark < 5), my_list]
+    // Серый фильтр
+    public static BufferedImage applyGrayFilter(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        BufferedImage grayImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                int rgb = image.getRGB(i, j);
+                int r = (rgb >> 16) & 0xFF;
+                int g = (rgb >> 8) & 0xFF;
+                int b = rgb & 0xFF;
+                int avg = (r + g + b) / 3;
+                int gray = (avg << 16) + (avg << 8) + avg;
+                grayImage.setRGB(i, j, gray);
+            }
+        }
+
+        return grayImage;
+    }
+    
+    // Красный фильтр
+    public static BufferedImage applyRedFilter(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        BufferedImage redImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                int rgb = image.getRGB(i, j);
+                int r = (rgb >> 16) & 0xFF;
+                int red = (r << 16) + 0x0000FF;
+                redImage.setRGB(i, j, red);
+            }
+        }
+
+        return redImage;
+    }
+    
+    // Зеленый фильтр
+    public static BufferedImage applyGreenFilter(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        BufferedImage greenImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                int rgb = image.getRGB(i, j);
+                int g = (rgb >> 8) & 0xFF;
+                int green = (g << 8) + 0x00FF00;
+                greenImage.setRGB(i, j, green);
+            }
+        }
+
+        return greenImage;
+    }
+    
+    // Синий фильтр
+    public static BufferedImage applyBlueFilter(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        BufferedImage blueImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                int rgb = image.getRGB(i, j);
+                int b = rgb & 0xFF;
+                int blue = b + 0x0000FF;
+                blueImage.setRGB(i, j, blue);
+            }
+        }
+
+        return blueImage;
+    }
+    
+    // Другой эффект
+    public static BufferedImage applyCustomFilter(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        BufferedImage customImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                int rgb = image.getRGB(i, j);
+                int r = (rgb >> 16) & 0xFF;
+                int g = (rgb >> 8) & 0xFF;
+                int b = rgb & 0xFF;
+
+                // Применение другого эффекта, например, инвертирование RGB значений
+                int invertedRgb = (255 - r) << 16 | (255 - g) << 8 | (255 - b);
+                customImage.setRGB(i, j, invertedRgb);
+            }
+        }
+
+        return customImage;
+    }
+}
