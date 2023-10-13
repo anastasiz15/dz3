@@ -1,0 +1,144 @@
+1. создание классов Activity:
+```
+public class ActivityA extends AppComatActivity {
+//...
+}
+public class ActivityB extedens AppComatActivity {
+
+//...
+}
+
+public class ActivityC AppComatActivity {
+//...
+}
+
+public class ActivityD AppComatActivity {
+//...
+}
+...
+2. добавить кнопки Open ActivityB
+android:id=*@+id/openActivityBButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+anroid:text="Open ActivityB"
+android:onClick="openActivityB" />
+
+3. добавить кнопки Open ActivityC
+android:id=*@+id/openActivityBButton"
+android:layout_widht="wrap_content"
+android:layot_height="wrap_content"
+android:text="Open ActivityC"
+android:onClick="openActivityC" />
+
+4.добавление кнопок "Open ActivityA","Open ActivityD","Close ActivityC","close Stack" в layot файле ActivityC
+<Button
+android:id=*@+id/openActivityBButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+anroid:text="Open ActivityA"
+android:onClick="openActivityA" />
+
+<Button
+android:id=*@+id/openActivityBButton"
+android:layout_widht="wrap_content"
+android:layot_height="wrap_content"
+android:text="Open ActivityD"
+android:onClick="openActivityD" />
+
+
+<Button
+android:id=*@+id/closeActivityBButton"
+android:layout_widht="wrap_content"
+android:layot_height="wrap_content"
+android:text="close ActivityC"
+android:onClick="closeActivityC" />
+
+<Button
+android:id=*@+id/closeStackBButton"
+android:layout_widht="wrap_content"
+android:layot_height="wrap_content"
+android:text="Close Stack"
+android:onClick="closeStack" />
+
+5.изменение бекраундов Activity
+
+<!-- для ACctivityA -->
+</RelativeLayout
+android:layout_widht="match_perent"
+android:layot_height="match_perent"
+android:background="#f44336">
+<!-- ... -->
+</RelativeLayout>
+
+<!-- для ACctivityB -->
+</RelativeLayout
+android:layout_widht="match_perent"
+android:layot_height="match_perent"
+android:background="#f4carf50">
+<!-- ... -->
+</RelativeLayout>
+
+<!-- для ACctivityC -->
+</RelativeLayout
+android:layout_widht="match_perent"
+android:layot_height="match_perent"
+android:background="#f2196f3">
+<!-- ... -->
+
+<!-- для ACctivityD -->
+</RelativeLayout
+android:layout_widht="match_perent"
+android:layot_height="match_perent"
+android:background="#ffeb3b">
+<!-- ... -->
+</RelativeLayout>
+
+6.создание пустых onClickListener'ов для кнопок,
+
+public class ActivityA extends AppCompatActivity {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_a);
+}
+public void openActivityB(View view) {
+    // обработка нажатия кнопки "Open ActivityB"
+  }
+}
+
+public class ActivityB extends AppCompatActivity {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_b);
+
+public void openActivityB(View view) {
+    // обработка нажатия кнопки "Open ActivityC"
+  }
+}
+public class ActivityC extends AppCompatActivity {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_c);
+}
+public void openActivityA(View view) {
+    // обработка нажатия кнопки "Open ActivityA"
+  }
+
+public void openActivityD(View view) {
+    // обработка нажатия кнопки "Open ActivityD"
+  }
+}
+public void openActivityC(View view) {
+    // обработка нажатия кнопки "Open ActivityC"
+  }
+}
+public void closeStack(View view) {
+    // обработка нажатия кнопки "Close Stack"
+  }
+}
+public class ActivityD extends AppCompatActivity {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_d);
+  }
+  //...
+}
